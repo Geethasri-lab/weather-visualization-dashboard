@@ -1,107 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather Dashboard</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: #f0f2f5;
-        padding: 20px;
-        text-align: center;
-      }
-      h1 {
-        color: #2c3e50;
-      }
-      form {
-        margin-bottom: 20px;
-      }
-      input[type="text"] {
-        padding: 8px;
-        width: 300px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-      button {
-        padding: 8px 16px;
-        border: none;
-        background: #3498db;
-        color: white;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-      button:hover {
-        background: #2980b9;
-      }
-      img {
-        margin: 10px;
-        width: 70%;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      }
-      table {
-        margin: 20px auto;
-        border-collapse: collapse;
-        width: 80%;
-      }
-      th,
-      td {
-        border: 1px solid #ddd;
-        padding: 10px;
-      }
-      th {
-        background-color: #3498db;
-        color: white;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>🌤️ Weather Visualization Dashboard</h1>
-    <form method="POST">
-      <input
-        type="text"
-        name="cities"
-        placeholder="Enter cities (comma-separated)"
-        required
-      />
-      <button type="submit">Fetch Data</button>
-    </form>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      padding: 8px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 8px 16px;
+      border: none;
+      background: #3498db;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+    img {
+      margin: 10px;
+      width: 70%;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 80%;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+    th {
+      background-color: #3498db;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌤️ Weather Visualization Dashboard</h1>
+  <form method="POST">
+    <input type="text" name="cities" placeholder="Enter cities (comma-separated)" required />
+    <button type="submit">Fetch Data</button>
+  </form>
 
-    {% if weather_data %}
-    <h2>Weather Data</h2>
-    <table>
-      <tr>
-        <th>City</th>
-        <th>Temperature (°C)</th>
-        <th>Humidity (%)</th>
-        <th>Pressure (hPa)</th>
-      </tr>
-      {% for item in weather_data %}
-      <tr>
-        <td>{{ item.City }}</td>
-        <td>{{ item.Temperature }}</td>
-        <td>{{ item.Humidity }}</td>
-        <td>{{ item.Pressure }}</td>
-      </tr>
-      {% endfor %}
-    </table>
+  {% if weather_data %}
+  <h2>Weather Data</h2>
+  <table>
+    <tr>
+      <th>City</th>
+      <th>Temperature (°C)</th>
+      <th>Humidity (%)</th>
+      <th>Pressure (hPa)</th>
+    </tr>
+    {% for item in weather_data %}
+    <tr>
+      <td>{{ item.City }}</td>
+      <td>{{ item.Temperature }}</td>
+      <td>{{ item.Humidity }}</td>
+      <td>{{ item.Pressure }}</td>
+    </tr>
+    {% endfor %}
+  </table>
 
-    <h2>Visualizations</h2>
-    <div>
-      <img
-        src="{{ url_for('static', filename='charts/temperature.png') }}"
-        alt="Temperature Chart"
-      />
-      <img
-        src="{{ url_for('static', filename='charts/humidity.png') }}"
-        alt="Humidity Chart"
-      />
-      <img
-        src="{{ url_for('static', filename='charts/pressure.png') }}"
-        alt="Pressure Chart"
-      />
-    </div>
-    {% endif %}
-  </body>
+  <h2>Visualizations</h2>
+  <div>
+    <img src="{{ url_for('static', filename='charts/temperature.png') }}" alt="Temperature Chart">
+    <img src="{{ url_for('static', filename='charts/humidity.png') }}" alt="Humidity Chart">
+    <img src="{{ url_for('static', filename='charts/pressure.png') }}" alt="Pressure Chart">
+  </div>
+  {% endif %}
+</body>
 </html>
